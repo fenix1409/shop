@@ -1,36 +1,36 @@
 'use client';
-import ProductCard from '@/components/ProductCard'
-import { Context } from '@/context/Context'
-import { instance } from '@/hook/instance'
-import { useQuery } from '@tanstack/react-query'
-import React, { useContext, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import ProductCard from '@/components/ProductCard';
+import { instance } from '@/hook/instance';
+import { useQuery } from '@tanstack/react-query';
+import React, { useState, useEffect } from 'react';
 
 export interface ProductType {
-    id: string,
-    categoryId: string,
-    img: string,
-    name: string,
+    id: string
+    categoryId: string
+    img: string
+    name: string
     description: string
 }
 
 const Products = () => {
-    const { categoryId } = useContext(Context)
-    const orderList = useSelector((state: { orderList: ProductType[] }) => state.orderList)
-
     const { data: products = [] } = useQuery({
-        queryKey: ['products', categoryId],
-        queryFn: () => instance().get(`/products`, { params: { categoryId: categoryId != "1" ? categoryId : null } }).then((res => res.data)),
-        enabled: true
+        queryKey: ['products'],
+        queryFn: () => instance().get('/products').then((res) => res.data)
     })
+
     const [getAllProducts, setGetAllProducts] = useState<ProductType[]>(products)
-    useEffect(() => setGetAllProducts(products), [products])
+
+    useEffect(() => {
+        setGetAllProducts(products);
+    }, [products]);
 
     return (
-        <div className='p-16 flex items-center flex-wrap gap-[30px]'>
-            {getAllProducts.map((item:ProductType) => <ProductCard getAllProducts={getAllProducts} setGetAllProducts={setGetAllProducts} key={item.id} item={item}/>)}
-        </div>
-    )
-}
+        <ul className="flex items-center gap-[41px] flex-wrap">
+            {getAllProducts.map((item: ProductType) => (
+                <ProductCard key={item.id} item={item} getAllProducts={getAllProducts} setGetAllProducts={setGetAllProducts} />
+            ))}
+        </ul>
+    );
+};
 
-export default Products
+export default Products;

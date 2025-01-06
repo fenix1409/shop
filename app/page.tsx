@@ -1,6 +1,10 @@
+"use client"
+import Products from "@/service/Products";
 
 export default function Home() {
   return (
-    <h1>hello</h1>
+    <div className="pl-[60px] pt-[80px]">
+      <Products />
+    </div>
   );
 }

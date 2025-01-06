@@ -1,32 +1,46 @@
 {
-    "categories":[
-        {
-            "id":1,
-            "title":"Категория  1 ",
-            "categoryName":"Товар 1",
-            "categoryImg":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
-        },
-        {
-            "id":2,
-            "title":"Категория  2",
-            "categoryName":"Товар 2",
-            "categoryImg":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
-        }
-    ],
-    "products":[
-        {
-            "id":1,
-            "categoryId":"1",
-            "img":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg",
-            "name":"product 1",
-            "description":"pizza img"
-        },
-        {
-            "id":2,
-            "categoryId":"5",
-            "img":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg",
-            "name":"product 1",
-            "description":"pizza img"
-        }
-    ]
+  "categories": [
+    {
+      "id": "1",
+      "title": "Категория  1 ",
+      "categoryName": "Товар 1",
+      "categoryImg": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Категория  2",
+      "categoryName": "Товар 2",
+      "categoryImg": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "categoryId": "1",
+      "img": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg",
+      "name": "product 1",
+      "description": "pizza img"
+    },
+    {
+      "id": "2",
+      "categoryId": "5",
+      "img": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg",
+      "name": "product 1",
+      "description": "pizza img"
+    },
+    {
+      "id": "12",
+      "categoryId": "1",
+      "img": "blob:http://localhost:3000/e8edf9eb-0421-4aca-8ad4-6d162990d95d",
+      "name": "kia",
+      "description": "kia stinger gt2 "
+    },
+    {
+      "id": "15",
+      "categoryId": "Категория 1",
+      "img": "blob:http://localhost:3000/285bbce1-204a-4e99-b96b-27d3919e7c92",
+      "name": "kia",
+      "description": "kia stinger gt2"
+    }
+  ]
 }

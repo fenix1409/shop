@@ -1,7 +1,13 @@
 'use client';
-import { configureStore } from "@reduxjs/toolkit";
-import { orderSlice } from "./basketSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import { orderSlice } from './basketSlice';
 
 export const store = configureStore({
-    reducer: orderSlice.reducer
+  reducer: {
+    order: orderSlice.reducer,
+    all: orderSlice.reducer
+  }
 })
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
