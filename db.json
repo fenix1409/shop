@@ -1,0 +1,32 @@
+{
+    "categories":[
+        {
+            "id":1,
+            "title":"Категория  1 ",
+            "categoryName":"Товар 1",
+            "categoryImg":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
+        },
+        {
+            "id":2,
+            "title":"Категория  2",
+            "categoryName":"Товар 2",
+            "categoryImg":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
+        }
+    ],
+    "products":[
+        {
+            "id":1,
+            "categoryId":"1",
+            "img":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg",
+            "name":"product 1",
+            "description":"pizza img"
+        },
+        {
+            "id":2,
+            "categoryId":"5",
+            "img":"https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg",
+            "name":"product 1",
+            "description":"pizza img"
+        }
+    ]
+}
