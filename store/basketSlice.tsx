@@ -29,15 +29,10 @@ export const orderSlice = createSlice({
             const id = state.orderList.findIndex((item: ProductType) => item.id === action.payload)
             state.orderList.splice(id, 1)
         },
-        clearOrders: () => {
-            return {
-                orderList: []
-            }
-        },
         deleteProduct: (state, action: PayloadAction<string>) => {
             state.orderList = state.orderList.filter(product => product.id !== action.payload)
         }
     }
 })
 
-export const { saveOrderProducts, deleteOrderProducts, clearOrders, deleteProduct } = orderSlice.actions
+export const { saveOrderProducts, deleteOrderProducts, deleteProduct } = orderSlice.actions

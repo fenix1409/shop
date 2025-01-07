@@ -1,14 +1,15 @@
 'use client';
 import { instance } from '@/hook/instance';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { CategoryType } from '@/service/Category';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import Image from 'next/image';
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
 interface AddProductModalProps {
     isOpen: boolean
     onClose: () => void
-    onSave: (product: { id: string; categoryName: string; img: string; name: string; description: string }) => void
-    product?: { id: string; categoryName: string; img: string; name: string; description: string } | null
+    onSave: (product: { id: string, categoryName: string, img: string, name: string, description: string }) => void
+    product?: { id: string, categoryName: string, img: string, name: string, description: string } | null
 }
 
 const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSave, product }) => {
@@ -19,6 +20,12 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
     const [description, setDescription] = useState('')
     const queryClient = useQueryClient()
 
+    const { data: categories = [] } = useQuery({
+        queryKey: ['categories'],
+        queryFn: () => instance().get('/categories').then((res) => res.data)
+    })
+
+    // add and save values part 
     useEffect(() => {
         if (product) {
             setId(product.id)
@@ -34,14 +41,18 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
             setDescription('')
         }
     }, [product])
+    // add and save values part 
 
+    // img part 
     function handleChooseImg(e: ChangeEvent) {
         const res = (e.target as HTMLInputElement).files
         if (res) {
             setImg(URL.createObjectURL(res[0]))
         }
     }
+    // img part 
 
+    // add and edit part 
     const mutation = useMutation({
         mutationFn: (data: any) => {
             if (product && product.id) {
@@ -67,8 +78,9 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
         const data = { id, categoryName, img, name, description }
         mutation.mutate(data)
     }
-
     if (!isOpen) return null
+    // add and edit part 
+
 
     return (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
@@ -83,9 +95,9 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
                         <label className="block text-sm font-medium text-gray-700">Категория</label>
                         <select value={categoryName} onChange={(e) => setCategoryName(e.target.value)} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required>
                             <option value="">Выберите категорию</option>
-                            <option value="1">Категория 1</option>
-                            <option value="2">Категория 2</option>
-                            <option value="3">Категория 3</option>
+                            {categories.map((item: CategoryType) => (
+                                <option key={item.id} value={item.categoryName}>{item.categoryName}</option>
+                            ))}
                         </select>
                     </div>
                     <div className="mb-4">
@@ -102,8 +114,8 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
                         <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required />
                     </div>
                     <div className="flex justify-end">
-                        <button type="button" onClick={onClose} className="mr-2 bg-gray-500 text-white px-4 py-2 rounded">Отмена</button>
-                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Сохранить</button>
+                        <button type="button" onClick={onClose} className="mr-2 bg-[#FF8F91] text-black px-4 py-2 rounded">Отмена</button>
+                        <button type="submit" className="bg-[#97FF8F] text-black px-4 py-2 rounded">Сохранить</button>
                     </div>
                 </form>
             </div>

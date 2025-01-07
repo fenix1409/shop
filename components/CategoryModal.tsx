@@ -1,55 +1,72 @@
-"use client"
-import { useState } from "react";
+'use client';
+import { instance } from '@/hook/instance';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React, { useState, useEffect } from 'react';
 
 interface CategoryModalType {
-  isOpen: boolean
-  onClose: () => void
-  onSave: (categoryName: string) => void
-};
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (category: { id: string; categoryName: string }) => void;
+  category?: { id: string; categoryName: string } | null;
+}
 
-const CategoryModal: React.FC<CategoryModalType> = ({ isOpen, onClose, onSave }) => {
-  const [categoryName, setCategoryName] = useState("");
+const CategoryModal: React.FC<CategoryModalType> = ({ isOpen, onClose, onSave, category }) => {
+  const [categoryName, setCategoryName] = useState<string>('');
+  const queryClient = useQueryClient();
 
-  const handleSave = () => {
-    if (categoryName.trim() === "") {
-      alert("Наименование категории не может быть пустым!");
-      return;
+  useEffect(() => {
+    if (category) {
+      setCategoryName(category.categoryName);
+    } else {
+      setCategoryName('');
     }
-    onSave(categoryName);
-    setCategoryName("");
-    onClose();
+  }, [category]);
+
+  const mutation = useMutation({
+    mutationFn: (data: any) => {
+      if (category && category.id) {
+        return instance().put(`/categories/${category.id}`, data);
+      } else {
+        return instance().post('/categories', data);
+      }
+    },
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ['categories'] });
+      onSave(data.data);
+      setCategoryName('');
+      onClose();
+    },
+  });
+
+  const handleSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    const data = { categoryName };
+    mutation.mutate(data);
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white p-6 rounded shadow-lg w-1/3">
-        <h2 className="text-lg font-bold mb-4">Создать Категорию</h2>
-        <label className="block mb-2 text-sm font-medium text-gray-700">
-          Наименование категории <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          value={categoryName}
-          onChange={(e) => setCategoryName(e.target.value)}
-          placeholder="Введите название категории"
-          className="border border-gray-300 p-2 rounded w-full mb-4"
-        />
-        <div className="flex justify-end gap-2">
-          <button
-            onClick={handleSave}
-            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-          >
-            Сохранить
-          </button>
-          <button
-            onClick={onClose}
-            className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
-          >
-            Отмена
-          </button>
-        </div>
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded shadow-lg w-96">
+        <h2 className="text-xl mb-4">{category ? 'Редактировать Категорию' : 'Создать Категорию +'}</h2>
+        <form onSubmit={handleSave}>
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700">Название Категории</label>
+            <input
+              type="text"
+              value={categoryName}
+              onChange={(e) => setCategoryName(e.target.value)}
+              placeholder="Введите название категории"
+              className="border p-2 rounded mb-4 w-full"
+              required
+            />
+          </div>
+          <div className="flex justify-end">
+            <button onClick={onClose} className="mr-2 bg-[#FF8F91] text-black px-4 py-2 rounded">Отмена</button>
+            <button type="submit" className="bg-[#97FF8F] text-black px-4 py-2 rounded">Сохранить</button>
+          </div>
+        </form>
       </div>
     </div>
   );

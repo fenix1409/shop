@@ -2,52 +2,52 @@
   "categories": [
     {
       "id": "1",
-      "title": "Категория  1",
-      "categoryName": "Товар 1",
-      "categoryImg": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
+      "categoryName": "Товар 1"
     },
     {
       "id": "2",
-      "title": "Категория  2",
-      "categoryName": "Товар 2",
-      "categoryImg": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
+      "categoryName": "Товар 2"
+    },
+    {
+      "id": "da7b",
+      "categoryName": "products"
     }
   ],
   "products": [
     {
-      "id": "12",
-      "categoryName": "2",
-      "img": "blob:http://localhost:3000/1e4b0c77-f9d6-4966-973c-a098b550bc24",
-      "name": "salomat",
-      "description": "salom"
+      "id": "21",
+      "categoryName": "Товар 1",
+      "img": "blob:http://localhost:3000/af9e232d-5e3c-4957-aaf7-4bcca15cb5fa",
+      "name": "city",
+      "description": "city ny"
     },
     {
-      "id": "1",
-      "categoryName": "Категория  2",
-      "img": "blob:http://localhost:3001/95accdde-a48b-4076-98b3-3104c7008d5a",
-      "name": "yaxshi",
-      "description": "yaxshi"
+      "id": "24Kia",
+      "categoryName": "products",
+      "img": "blob:http://localhost:3000/1e22abcb-9ffa-4060-be0b-deb17a997d7b",
+      "name": "KIA Stinger",
+      "description": "KIA Stinger GT2 2024"
     },
     {
-      "id": "412",
-      "categoryName": "3",
-      "img": "blob:http://localhost:3000/10cfd44d-eb90-4bdb-b6eb-f59000283f08",
-      "name": "cadcdv",
-      "description": "vfvSASD"
+      "id": "4512as",
+      "categoryName": "Товар 2",
+      "img": "blob:http://localhost:3000/d2a968be-050d-46fe-839b-369619a5326d",
+      "name": "moon",
+      "description": "moonlight"
     },
     {
-      "id": "sd45c",
-      "categoryName": "2",
-      "img": "blob:http://localhost:3000/66f1b97e-1d38-4784-9b3b-efdfaf612f32",
-      "name": "kia stinger",
-      "description": "kia stinge"
+      "id": "4512dcs",
+      "categoryName": "products",
+      "img": "blob:http://localhost:3000/3ed8ae7c-1759-40e9-8d10-5c7ccc0e9d2d",
+      "name": "pencil",
+      "description": "pencils box"
     },
     {
-      "id": "52as",
-      "categoryName": "2",
-      "img": "blob:http://localhost:3000/83f16922-6f53-41d3-8af3-fd372c0fe002",
-      "name": "saloamat",
-      "description": "aslcmldv"
+      "id": "8456csd",
+      "categoryName": "Товар 2",
+      "img": "blob:http://localhost:3000/e881eb60-110c-40b4-82a4-a0fbbb1f09a3",
+      "name": "bridge",
+      "description": "bridge in the NYC"
     }
   ]
 }

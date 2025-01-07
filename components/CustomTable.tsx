@@ -26,20 +26,20 @@ const CustomTable: React.FC = () => {
         } catch (error) {
             alert("Xato bor")
         }
-    };
+    }
 
     // edit part
     const handleEditProduct = (product: ProductType) => {
         setSelectedProduct(product)
         setIsModal(true)
-    };
+    }
 
     const handleSaveProduct = (product: ProductType) => {
         refetch()
         setIsModal(false)
         setSelectedProduct(null)
         console.log(product);
-    };
+    }
     
 
     return (
