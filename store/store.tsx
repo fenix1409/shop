@@ -4,8 +4,7 @@ import { orderSlice } from './basketSlice';
 
 export const store = configureStore({
   reducer: {
-    order: orderSlice.reducer,
-    all: orderSlice.reducer
+    order: orderSlice.reducer
   }
 })
 

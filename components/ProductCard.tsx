@@ -11,7 +11,7 @@ interface ProductCardType {
   setGetAllProducts: React.Dispatch<SetStateAction<ProductType[]>>
 }
 
-const ProductCard: React.FC<ProductCardType> = ({ item, getAllProducts, setGetAllProducts }) => {
+const ProductCard: React.FC<ProductCardType> = ({ item }) => {
   const dispatch = useDispatch()
 
   const handleOrderBtnClick = () => {

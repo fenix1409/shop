@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 
 export interface ProductType {
     id: string
-    categoryId: string
+    categoryName: string
     img: string
     name: string
     description: string
@@ -21,8 +21,8 @@ const Products = () => {
     const [getAllProducts, setGetAllProducts] = useState<ProductType[]>(products)
 
     useEffect(() => {
-        setGetAllProducts(products);
-    }, [products]);
+        setGetAllProducts(products)
+    }, [products])
 
     return (
         <ul className="flex items-center gap-[41px] flex-wrap">
