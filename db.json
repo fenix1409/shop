@@ -2,7 +2,7 @@
   "categories": [
     {
       "id": "1",
-      "title": "Категория  1 ",
+      "title": "Категория  1",
       "categoryName": "Товар 1",
       "categoryImg": "https://thumbs.dreamstime.com/b/pizza-delicious-isolated-white-transparent-background-png-file-ready-to-use-pizza-delicious-isolated-white-transparent-293224138.jpg"
     },
@@ -16,8 +16,8 @@
   "products": [
     {
       "id": "12",
-      "categoryName": "Категория  1",
-      "img": "blob:http://localhost:3001/ee923f3f-6c61-47ea-8193-142f650a5f57",
+      "categoryName": "2",
+      "img": "blob:http://localhost:3000/1e4b0c77-f9d6-4966-973c-a098b550bc24",
       "name": "salomat",
       "description": "salom"
     },
@@ -27,6 +27,27 @@
       "img": "blob:http://localhost:3001/95accdde-a48b-4076-98b3-3104c7008d5a",
       "name": "yaxshi",
       "description": "yaxshi"
+    },
+    {
+      "id": "412",
+      "categoryName": "3",
+      "img": "blob:http://localhost:3000/10cfd44d-eb90-4bdb-b6eb-f59000283f08",
+      "name": "cadcdv",
+      "description": "vfvSASD"
+    },
+    {
+      "id": "sd45c",
+      "categoryName": "2",
+      "img": "blob:http://localhost:3000/66f1b97e-1d38-4784-9b3b-efdfaf612f32",
+      "name": "kia stinger",
+      "description": "kia stinge"
+    },
+    {
+      "id": "52as",
+      "categoryName": "2",
+      "img": "blob:http://localhost:3000/83f16922-6f53-41d3-8af3-fd372c0fe002",
+      "name": "saloamat",
+      "description": "aslcmldv"
     }
   ]
 }

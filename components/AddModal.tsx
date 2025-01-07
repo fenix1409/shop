@@ -5,7 +5,7 @@ import Image from 'next/image';
 import React, { ChangeEvent, useState, useEffect } from 'react';
 
 interface AddProductModalProps {
-    isOpen: boolean;
+    isOpen: boolean
     onClose: () => void
     onSave: (product: { id: string; categoryName: string; img: string; name: string; description: string }) => void
     product?: { id: string; categoryName: string; img: string; name: string; description: string } | null
@@ -44,21 +44,26 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
 
     const mutation = useMutation({
         mutationFn: (data: any) => {
-            if (id) {
-                return instance().put(`/products/${id}`, data)
+            if (product && product.id) {
+                return instance().put(`/products/${product.id}`, data)
             } else {
                 return instance().post('/products', data)
             }
         },
-        onSuccess: () => {
+        onSuccess: (data) => {
             queryClient.invalidateQueries({ queryKey: ['products'] })
-            onSave({ id, categoryName, img, name, description })
+            onSave(data.data)
+            setId('')
+            setCategoryName('')
+            setImg('')
+            setName('')
+            setDescription('')
             onClose()
         }
     })
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
+        e.preventDefault()
         const data = { id, categoryName, img, name, description }
         mutation.mutate(data)
     }
@@ -97,8 +102,8 @@ const AddProductModal: React.FC<AddProductModalProps> = ({ isOpen, onClose, onSa
                         <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" required />
                     </div>
                     <div className="flex justify-end">
-                        <button type="button" onClick={onClose} className="mr-2 bg-[#FF8F91] text-black px-4 py-2 rounded">Отмена</button>
-                        <button type="submit" className="bg-[#97FF8F] text-black px-4 py-2 rounded">Сохранить</button>
+                        <button type="button" onClick={onClose} className="mr-2 bg-gray-500 text-white px-4 py-2 rounded">Отмена</button>
+                        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">Сохранить</button>
                     </div>
                 </form>
             </div>
